@@ -61,20 +61,20 @@
             bindings = <&kp>, <&kp>;
         };
 
-        /* Pulgar izquierdo: Tap = GUI | Hold = Capa 1 (Kp / Numeros) */
-        lt_gui: layer_tap_gui {
+        /* Pulgar derecho: Tap = Enter | Hold = Capa 1 (Kp / Numeros) */
+        lt_enter: layer_tap_enter {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_GUI";
+            label = "LAYER_TAP_ENTER";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             bindings = <&mo>, <&kp>;
         };
 
-        /* Pulgar derecho: Tap = Enter | Hold = Capa 2 (Fn / Momentary Layer) */
-        lt_enter: layer_tap_enter {
+        /* Pulgar izquierdo: Tap = GUI | Hold = Capa 1 (Kp / Numeros) */
+        lt_gui: layer_tap_gui {
             compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_ENTER";
+            label = "LAYER_TAP_GUI";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -85,6 +85,7 @@
     keymap {
         compatible = "zmk,keymap";
 
+        /* Capa 0: Base */
         default_layer {
             display-name = "Base";
             bindings = <
@@ -92,21 +93,23 @@
                 &kp TAB   &kp Q          &kp W          &kp E           &kp R           &kp T           &kp PIPE                                                                        &none        &kp Y         &kp U           &kp I           &kp O          &kp P            &kp BSLH
                 &kp ESC   &hml LGUI A    &hml LALT S    &hml LCTRL D    &hml LSHFT F    &kp G           &kp TILDE              &kp C_VOL_DN &kp C_VOL_UP &kp DEL    &none               &none        &kp H         &hmr RSHFT J    &hmr RCTRL K    &hmr RALT L    &hmr RGUI SEMI   &kp SQT
                 &kp LSHFT &kp Z          &kp X          &kp C           &kp V           &kp B                                               &kp PSCRN    &kp LCTRL                                   &kp N         &kp M           &kp COMMA       &kp DOT        &kp FSLH         &kp RSHFT
-                &mo 2     &kp GRAVE      &kp CAPS       &kp LEFT        &kp RIGHT                                &kp BSPC &lt_gui 1 LGUI    &kp RALT     &kp RALT   &lt_enter 2 ENTER &kp SPACE                   &kp UP          &kp DOWN        &kp MINUS      &none            &mo 2
+                &mo 2     &kp GRAVE      &kp CAPS       &kp LEFT        &kp RIGHT                                &kp BSPC &lt_gui 1 LGUI    &kp RALT     &kp RALT   &lt_enter 1 ENTER &kp SPACE                   &kp UP          &kp DOWN        &kp MINUS      &none            &mo 2
             >;
         };
 
+        /* Capa 1: Kp (Numeros directos segun 1.png) */
         keypad {
             display-name = "Kp";
             bindings = <
-                &kp PLUS  &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT &trans                                                                      &mo 3 &kp CARET &kp AMPS   &kp ASTRK    &kp LPAR      &kp RPAR        &kp MINUS
-                &kp TAB   &kp Q     &kp W     &kp E     &kp R     &kp T     &none                                                                       &none &kp Y     &kp U      &kp I        &kp O         &kp P           &kp BSLH
-                &kp ESC   &kp A     &kp S     &kp D     &kp F     &kp G     &none                  &trans &trans &trans &trans                              &none &kp H     &kp J      &kp K        &kp L         &kp SEMI        &kp SQT
-                &kp LSHFT &kp Z     &kp X     &kp C     &kp V     &kp B                                   &trans &trans                                           &kp N     &kp M      &kp COMMA    &kp DOT       &kp FSLH        &kp RSHFT
-                &mo 2     &trans    &trans    &kp LEFT  &kp RIGHT                 &kp BSPC &kp LGUI   &trans &trans &kp ENTER &kp SPACE                         &trans    &trans     &trans       &trans        &mo 2
+                &kp EQUAL &kp N1    &kp N2    &kp N3   &kp N4    &kp N5 &trans                                                                      &mo 3 &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &kp MINUS
+                &kp TAB   &kp Q     &kp W     &kp E    &kp R     &kp T  &none                                                                       &none &kp Y     &kp U     &kp I     &kp O     &kp P    &kp BSLH
+                &kp ESC   &kp A     &kp S     &kp D    &kp F     &kp G  &none                  &trans &trans &trans &trans                              &none &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
+                &kp LSHFT &kp Z     &kp X     &kp C    &kp V     &kp B                                &trans &trans                                     &kp N &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
+                &mo 2     &trans    &trans    &kp LEFT &kp RIGHT                 &kp BSPC &kp LGUI    &trans &trans &kp ENTER &kp SPACE                         &kp DOWN  &kp UP    &kp LBKT  &kp RBKT &mo 2
             >;
         };
 
+        /* Capa 2: Fn */
         fn {
             display-name = "Fn";
             bindings = <
@@ -118,6 +121,7 @@
             >;
         };
 
+        /* Capa 3: Mod */
         mod {
             display-name = "Mod";
             bindings = <
@@ -129,17 +133,19 @@
             >;
         };
 
+        /* Capa 4: Red (Juegos - Numeros 1-0 nativos y sin Homerow Mods) */
         red_layer {
             display-name = "Red";
             bindings = <
-                &kp PLUS  &kp EXCL  &kp AT    &kp HASH &kp DLLR  &kp PRCNT &tog 4                                                                      &mo 3 &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR &kp MINUS
-                &kp TAB   &kp Q     &kp W     &kp E    &kp R     &kp T     &none                                                                       &none &kp Y     &kp U     &kp I     &kp O     &kp P    &kp BSLH
-                &kp ESC   &kp A     &kp S     &kp D    &kp F     &kp G     &none                  &trans &trans &trans &trans                              &none &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
-                &kp LSHFT &kp Z     &kp X     &kp C    &kp V     &kp B                                   &trans &trans                                     &kp N &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
+                &kp EQUAL &kp N1    &kp N2    &kp N3   &kp N4    &kp N5 &tog 4                                                                      &mo 3 &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &kp MINUS
+                &kp TAB   &kp Q     &kp W     &kp E    &kp R     &kp T  &none                                                                       &none &kp Y     &kp U     &kp I     &kp O     &kp P    &kp BSLH
+                &kp ESC   &kp A     &kp S     &kp D    &kp F     &kp G  &none                  &trans &trans &trans &trans                              &none &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
+                &kp LSHFT &kp Z     &kp X     &kp C    &kp V     &kp B                                &trans &trans                                     &kp N &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
                 &mo 2     &trans    &trans    &kp LEFT &kp RIGHT                 &kp BSPC &kp LGUI    &trans &trans &kp ENTER &kp SPACE                         &kp DOWN  &kp UP    &kp LBKT  &kp RBKT &mo 2
             >;
         };
 
+        /* Capa 5: Purple */
         purple_layer {
             display-name = "Purple";
             bindings = <
@@ -162,4 +168,3 @@
         };
     };
 };
-
