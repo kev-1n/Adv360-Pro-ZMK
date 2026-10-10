@@ -133,7 +133,7 @@
             >;
         };
 
-        /* Capa 4: Red (Juegos - LALT dedicado en pulgar, sin Homerow Mods) */
+        /* Capa 4: Red (Juegos - GUI restaurado en pulgar principal, LALT en tecla adyacente del cluster) */
         red_layer {
             display-name = "Red";
             bindings = <
@@ -141,7 +141,7 @@
                 &kp TAB   &kp Q     &kp W     &kp E    &kp R     &kp T  &none                                                                       &none &kp Y     &kp U     &kp I     &kp O     &kp P    &kp BSLH
                 &kp ESC   &kp A     &kp S     &kp D    &kp F     &kp G  &none                  &trans &kp PSCRN &kp DEL   &trans                     &none &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
                 &kp LSHFT &kp Z     &kp X     &kp C    &kp V     &kp B                                &kp LCTRL &kp RCTRL                                  &kp N &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
-                &mo 2     &trans    &trans    &kp LEFT &kp RIGHT                 &kp BSPC &kp LALT    &kp LALT  &kp RALT  &kp ENTER &kp SPACE                         &kp DOWN  &kp UP    &kp LBKT  &kp RBKT &mo 2
+                &mo 2     &trans    &trans    &kp LEFT &kp RIGHT                 &kp BSPC &kp LGUI    &kp LALT  &kp RALT  &kp ENTER &kp SPACE                         &kp DOWN  &kp UP    &kp LBKT  &kp RBKT &mo 2
             >;
         };
 
@@ -168,3 +168,4 @@
         };
     };
 };
+
