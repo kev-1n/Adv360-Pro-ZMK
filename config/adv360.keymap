@@ -37,27 +37,40 @@
         #include "macros.dtsi"
         #include "version.dtsi"
 
-        /* Homerow mods mano izquierda */
+        /* Tap-dance para Esc (1 toque) y Caps Lock (doble toque) */
+        esc_caps_dance: esc_caps_dance {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ESC_CAPS_DANCE";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp ESCAPE>, <&kp CAPSLOCK>;
+        };
+
+        /* Homerow mods mano izquierda (solo se activa mod si pulsas una tecla derecha o pulgar) */
         hml: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_LEFT";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <1000>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <7 8 9 10 11 12 13 21 22 23 24 25 26 27 39 40 41 42 43 44 45 54 55 56 57 58 59 71 72 73 74 75 37 38 53 68 69 70>;
+            hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
         };
 
-        /* Homerow mods mano derecha */
+        /* Homerow mods mano derecha (solo se activa mod si pulsas una tecla izquierda o pulgar) */
         hmr: homerow_mods_right {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_RIGHT";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <1000>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 34 35 36 46 47 48 49 50 51 52 60 61 62 63 64 65 66 67>;
+            hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
         };
 
@@ -89,11 +102,11 @@
         default_layer {
             display-name = "Base";
             bindings = <
-                &kp DLLR  &kp PLUS       &kp LBKT       &kp LBRC        &kp LPAR        &kp AMPS        &tog 4                                                                          &mo 3        &kp LS(EQUAL) &kp RPAR        &kp RBRC        &kp RBKT       &kp ASTRK        &kp EXCL
-                &kp TAB   &kp Q          &kp W          &kp E           &kp R           &kp T           &kp PIPE                                                                        &none        &kp Y         &kp U           &kp I           &kp O          &kp P            &kp BSLH
-                &kp ESC   &hml LGUI A    &hml RALT S    &hml LCTRL D    &hml LSHFT F    &kp G           &kp TILDE              &kp C_VOL_DN &kp PSCRN    &kp DEL    &kp C_VOL_UP        &none        &kp H         &hmr RSHFT J    &hmr RCTRL K    &hmr RALT L    &hmr RGUI SEMI   &kp SQT
-                &sk LSHFT &kp Z          &kp X          &kp C           &kp V           &kp B                                               &kp LCTRL    &kp RCTRL                                   &kp N         &kp M           &kp COMMA       &kp DOT        &kp FSLH         &sk RSHFT
-                &mo 2     &kp GRAVE      &kp CAPS       &kp LEFT        &kp RIGHT                                &kp BSPC &lt_gui 1 LGUI    &kp LALT     &kp RALT   &lt_enter 1 ENTER &kp SPACE                   &kp UP          &kp DOWN        &kp MINUS      &none            &mo 2
+                &kp DLLR         &kp PLUS       &kp LBKT       &kp LBRC        &kp LPAR        &kp AMPS        &tog 4                                                                          &mo 3        &kp EQUAL     &kp RPAR        &kp RBRC        &kp RBKT       &kp ASTRK        &kp EXCL
+                &kp TAB          &kp Q          &kp W          &kp E           &kp R           &kp T           &kp PIPE                                                                        &none        &kp Y         &kp U           &kp I           &kp O          &kp P            &kp BSLH
+                &esc_caps_dance  &hml LGUI A    &hml RALT S    &hml LCTRL D    &hml LSHFT F    &kp G           &kp TILDE              &kp C_VOL_DN &kp PSCRN    &kp DEL    &kp C_VOL_UP        &none        &kp H         &hmr RSHFT J    &hmr RCTRL K    &hmr RALT L    &hmr RGUI SEMI   &kp SQT
+                &sk LSHFT        &kp Z          &kp X          &kp C           &kp V           &kp B                                               &kp LCTRL    &kp RCTRL                                   &kp N         &kp M           &kp COMMA       &kp DOT        &kp FSLH         &sk RSHFT
+                &mo 2            &kp GRAVE      &none          &kp LEFT        &kp RIGHT                                &kp BSPC &lt_gui 1 LGUI    &kp LALT     &kp RALT   &lt_enter 1 ENTER &kp SPACE                   &kp UP          &kp DOWN        &kp MINUS      &none            &mo 2
             >;
         };
 
@@ -133,7 +146,7 @@
             >;
         };
 
-        /* Capa 4: Red (Juegos - GUI restaurado en pulgar principal, LALT en tecla adyacente del cluster) */
+        /* Capa 4: Red (Juegos - GUI en pulgar principal, LALT en cluster, sin Homerow Mods) */
         red_layer {
             display-name = "Red";
             bindings = <
@@ -168,4 +181,3 @@
         };
     };
 };
-
