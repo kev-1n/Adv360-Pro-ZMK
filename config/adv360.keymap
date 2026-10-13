@@ -37,16 +37,16 @@
         #include "macros.dtsi"
         #include "version.dtsi"
 
-        /* Tap-dance para Esc (1 toque) y Caps Lock (doble toque) */
+        /* Tap-dance para Esc (1 toque) y Caps Lock (doble toque, 130ms para Neovim) */
         esc_caps_dance: esc_caps_dance {
             compatible = "zmk,behavior-tap-dance";
             label = "ESC_CAPS_DANCE";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <130>;
             bindings = <&kp ESCAPE>, <&kp CAPSLOCK>;
         };
 
-        /* Homerow mods mano izquierda (solo se activa mod si pulsas una tecla derecha o pulgar) */
+        /* Homerow mods mano izquierda (posicionales contra misfires) */
         hml: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_LEFT";
@@ -60,7 +60,7 @@
             bindings = <&kp>, <&kp>;
         };
 
-        /* Homerow mods mano derecha (solo se activa mod si pulsas una tecla izquierda o pulgar) */
+        /* Homerow mods mano derecha (posicionales contra misfires) */
         hmr: homerow_mods_right {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_RIGHT";
