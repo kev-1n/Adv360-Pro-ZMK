@@ -5,6 +5,7 @@
 #include <dt-bindings/zmk/stp.h>
 #include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/outputs.h>
 
 &lt {
     quick_tap_ms = <200>;
@@ -17,7 +18,7 @@
 };
 
 &sk {
-    release-after-ms = <2000>;
+    release-after-ms = ;
     quick-release;
 };
 
@@ -103,22 +104,22 @@
             display-name = "Base";
             bindings = <
                 &kp DLLR         &kp PLUS       &kp LBKT       &kp LBRC        &kp LPAR        &kp AMPS        &tog 4                                                                          &mo 3        &kp EQUAL     &kp RPAR        &kp RBRC        &kp RBKT       &kp ASTRK        &kp EXCL
-                &kp TAB          &kp Q          &kp W          &kp E           &kp R           &kp T           &kp PIPE                                                                        &none        &kp Y         &kp U           &kp I           &kp O          &kp P            &kp BSLH
-                &esc_caps_dance  &hml LGUI A    &hml RALT S    &hml LCTRL D    &hml LSHFT F    &kp G           &kp TILDE              &kp C_VOL_DN &kp PSCRN    &kp DEL    &kp C_VOL_UP        &none        &kp H         &hmr RSHFT J    &hmr RCTRL K    &hmr RALT L    &hmr RGUI SEMI   &kp SQT
+                &kp TAB          &kp Q          &kp W          &kp E           &kp R           &kp T           &kp PIPE                                                                        &kp AT       &kp Y         &kp U           &kp I           &kp O          &kp P            &kp BSLH
+                &esc_caps_dance  &hml LGUI A    &hml RALT S    &hml LCTRL D    &hml LSHFT F    &kp G           &kp TILDE              &kp C_VOL_DN &kp PSCRN    &kp DEL    &out OUT_TOG        &kp HASH     &kp H         &hmr RSHFT J    &hmr RCTRL K    &hmr RALT L    &hmr RGUI SEMI   &kp SQT
                 &sk LSHFT        &kp Z          &kp X          &kp C           &kp V           &kp B                                               &kp LCTRL    &kp RCTRL                                   &kp N         &kp M           &kp COMMA       &kp DOT        &kp FSLH         &sk RSHFT
-                &mo 2            &kp GRAVE      &none          &kp LEFT        &kp RIGHT                                &kp BSPC &lt_gui 1 LGUI    &kp LALT     &kp RALT   &lt_enter 1 ENTER &kp SPACE                   &kp UP          &kp DOWN        &kp MINUS      &none            &mo 2
+                &mo 2            &kp GRAVE      &kp CAPS       &kp LEFT        &kp RIGHT                                &kp BSPC &lt_gui 1 LGUI    &kp LALT     &kp RALT   &lt_enter 1 ENTER &kp SPACE                   &kp UP          &kp DOWN        &kp MINUS      &none            &mo 2
             >;
         };
 
-        /* Capa 1: Kp (Numeros directos segun 1.png) */
+        /* Capa 1: Kp (Numeros y signos igualados a Capa 0) */
         keypad {
             display-name = "Kp";
             bindings = <
-                &kp EQUAL &kp N1    &kp N2    &kp N3   &kp N4    &kp N5 &trans                                                                      &mo 3 &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &kp MINUS
-                &kp TAB   &kp Q     &kp W     &kp E    &kp R     &kp T  &none                                                                       &none &kp Y     &kp U     &kp I     &kp O     &kp P    &kp BSLH
-                &kp ESC   &kp A     &kp S     &kp D    &kp F     &kp G  &none                  &trans &kp PSCRN &kp DEL   &trans                     &none &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
-                &kp LSHFT &kp Z     &kp X     &kp C    &kp V     &kp B                                &kp LCTRL &kp RCTRL                                  &kp N &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
-                &mo 2     &trans    &trans    &kp LEFT &kp RIGHT                 &kp BSPC &kp LGUI    &kp LALT  &kp RALT  &kp ENTER &kp SPACE                         &kp DOWN  &kp UP    &kp LBKT  &kp RBKT &mo 2
+                &kp DLLR  &kp N1    &kp N2       &kp N3   &kp N4    &kp N5 &trans                                                                      &mo 3 &kp EQUAL &kp N6    &kp N7    &kp N8    &kp N9   &kp N0
+                &kp TAB   &kp Q     &kp W        &kp E    &kp R     &kp T  &kp PIPE                                                                    &kp AT &kp Y    &kp U     &kp I     &kp O     &kp P    &kp BSLH
+                &kp ESC   &kp A     &kp S        &kp D    &kp F     &kp G  &kp TILDE              &trans       &kp PSCRN &kp DEL   &out OUT_TOG          &kp HASH &kp H   &kp J     &kp K     &kp L     &kp SEMI &kp SQT
+                &kp LSHFT &kp Z     &kp X        &kp C    &kp V     &kp B                                      &kp LCTRL &kp RCTRL                                  &kp N &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
+                &mo 2     &trans    &trans       &kp LEFT &kp RIGHT                 &kp BSPC &kp LGUI          &kp LALT  &kp RALT  &lt_enter 1 ENTER &kp SPACE             &kp DOWN  &kp UP    &kp LBKT  &kp RBKT &mo 2
             >;
         };
 
