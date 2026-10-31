@@ -111,7 +111,7 @@
             >;
         };
 
-        /* Capa 1: Kp (Numeros y signos) */
+        /* Capa 1: Kp (Numeros 1-0 con signos de Fila 1, 2 y 3 exactamente iguales a Capa 0) */
         keypad {
             display-name = "Kp";
             bindings = <
