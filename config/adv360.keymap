@@ -75,7 +75,7 @@
             bindings = <&kp>, <&kp>;
         };
 
-        /* Pulgar derecho: Tap = Enter | Hold = Capa 1 (Kp / Numeros) */
+        /* Pulgar derecho: Tap = Enter | Hold = Capa 1 (Signos de programación) */
         lt_enter: layer_tap_enter {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_ENTER";
@@ -85,7 +85,7 @@
             bindings = <&mo>, <&kp>;
         };
 
-        /* Pulgar izquierdo: Tap = GUI | Hold = Capa 1 (Kp / Numeros) */
+        /* Pulgar izquierdo: Tap = GUI | Hold = Capa 1 (Signos de programación) */
         lt_gui: layer_tap_gui {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_GUI";
@@ -99,7 +99,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        /* Capa 0: Base (Numeros directos en Fila 1) */
+        /* Capa 0: Base / Principal (Homerow Mods + Números directos en fila 1) */
         default_layer {
             display-name = "Base";
             bindings = <
@@ -111,15 +111,15 @@
             >;
         };
 
-        /* Capa 1: Kp (Numeros directos identicos a Capa 0) */
+        /* Capa 1: Kp (Signos de programación al sostener Enter o GUI) */
         keypad {
             display-name = "Kp";
             bindings = <
-                &kp DLLR  &kp N1    &kp N2       &kp N3   &kp N4    &kp N5 &trans                                                                      &mo 3 &kp EQUAL &kp N6    &kp N7    &kp N8    &kp N9   &kp N0
-                &kp TAB   &kp Q     &kp W        &kp E    &kp R     &kp T  &kp PIPE                                                                    &kp AT &kp Y    &kp U     &kp I     &kp O     &kp P    &kp BSLH
-                &kp ESC   &kp A     &kp S        &kp D    &kp F     &kp G  &kp TILDE              &trans       &kp PSCRN &kp DEL   &out OUT_TOG          &kp HASH &kp H   &kp J     &kp K     &kp L     &kp SEMI &kp SQT
-                &kp LSHFT &kp Z     &kp X        &kp C    &kp V     &kp B                                      &kp LCTRL &kp RCTRL                                  &kp N &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
-                &mo 2     &mo 3     &trans       &kp LEFT &kp RIGHT                 &kp BSPC &kp LGUI          &kp LALT  &kp RALT  &lt_enter 1 ENTER &kp SPACE             &kp DOWN  &kp UP    &kp LBKT  &mo 3    &mo 2
+                &kp DLLR  &kp PLUS  &kp LBKT     &kp LBRC &kp LPAR  &kp AMPS &trans                                                                      &mo 3 &kp EQUAL &kp RPAR  &kp RBRC  &kp RBKT  &kp ASTRK &kp EXCL
+                &kp TAB   &kp Q     &kp W        &kp E    &kp R     &kp T    &kp PIPE                                                                    &kp AT &kp Y    &kp U     &kp I     &kp O     &kp P     &kp BSLH
+                &kp ESC   &kp A     &kp S        &kp D    &kp F     &kp G    &kp TILDE              &trans       &kp PSCRN &kp DEL   &out OUT_TOG          &kp HASH &kp H   &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
+                &kp LSHFT &kp Z     &kp X        &kp C    &kp V     &kp B                                        &kp LCTRL &kp RCTRL                                  &kp N &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RSHFT
+                &mo 2     &mo 3     &trans       &kp LEFT &kp RIGHT                   &kp BSPC &kp LGUI          &kp LALT  &kp RALT  &lt_enter 1 ENTER &kp SPACE             &kp DOWN  &kp UP    &kp LBKT  &mo 3     &mo 2
             >;
         };
 
@@ -147,15 +147,15 @@
             >;
         };
 
-        /* Capa 4: Red (Juegos - GUI en pulgar principal, LALT en cluster, sin Homerow Mods) */
+        /* Capa 4: Red (Capa de Números / Juegos sin Homerow Mods, con signos interiores | ~ @ #) */
         red_layer {
             display-name = "Red";
             bindings = <
                 &kp EQUAL &kp N1    &kp N2    &kp N3   &kp N4    &kp N5 &tog 4                                                                      &mo 3 &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &kp MINUS
-                &kp TAB   &kp Q     &kp W     &kp E    &kp R     &kp T  &none                                                                       &none &kp Y     &kp U     &kp I     &kp O     &kp P    &kp BSLH
-                &kp ESC   &kp A     &kp S     &kp D    &kp F     &kp G  &none                  &trans &kp PSCRN &kp DEL   &trans                     &none &kp H     &kp J     &kp K     &kp L     &kp SEMI &kp SQT
+                &kp TAB   &kp Q     &kp W     &kp E    &kp R     &kp T  &kp PIPE                                                                    &kp AT &kp Y    &kp U     &kp I     &kp O     &kp P    &kp BSLH
+                &kp ESC   &kp A     &kp S     &kp D    &kp F     &kp G  &kp TILDE              &trans &kp PSCRN &kp DEL   &trans                     &kp HASH &kp H   &kp J     &kp K     &kp L     &kp SEMI &kp SQT
                 &kp LSHFT &kp Z     &kp X     &kp C    &kp V     &kp B                                &kp LCTRL &kp RCTRL                                  &kp N &kp M     &kp COMMA &kp DOT   &kp FSLH &kp RSHFT
-                &mo 2     &trans    &trans    &kp LEFT &kp RIGHT                 &kp BSPC &kp LGUI    &kp LALT  &kp RALT  &kp ENTER &kp SPACE                         &kp DOWN  &kp UP    &kp LBKT  &kp RBKT &mo 2
+                &mo 2     &trans    &trans    &kp LEFT &kp RIGHT                 &kp BSPC &kp LGUI    &kp LALT  &kp RALT  &lt_enter 1 ENTER &kp SPACE                   &kp DOWN  &kp UP    &kp LBKT  &kp RBKT &mo 2
             >;
         };
 
